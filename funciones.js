@@ -1,18 +1,18 @@
 let fs = require("fs");
-const autos = require("./autos");
+
 let funciones = {
-    archivo: "./autos.js",
-    leerArchivo: function(){
-        return fs.readFileSync(this.archivo, 'utf-8');
+    archivo: "./autos.json",
+    leerJSON: function(){
+        return JSON.parse(fs.readFileSync(this.archivo, 'utf-8'));
     },
-    escribirArchivo: function (autos) {
-        fs.writeFileSync(this.archivo, autos, null, ' ');
+    escribirJSON: function (autos) {
+        fs.writeFileSync(this.archivo, JSON.stringify(autos, null, ' '));
     },
-    guardarAuto(auto) {        
+    guardarTarea(auto) {
+        let autos = this.leerJSON();
         autos.push(auto);
-        this.escribirArchivo(autos);
-    }
+        this.escribirJSON(autos);
+    },
 }
 
 module.exports = funciones;
-console.log(funciones.guardarAuto())
