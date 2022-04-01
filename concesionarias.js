@@ -1,17 +1,11 @@
+
 let funciones = require("./funciones");
-autos = [];
+let autos = funciones.leerJSON();
 
 let concesionaria = {
-    autos: autos = funciones.leerJSON(),
+    autos: autos,
     buscarAuto: function (patentebuscada) {
-        for (let i = 0; i < autos.length; i++) {
-            if (autos[i].patente == patentebuscada) {
-                return autos[i];
-            }
-            else {
-                return null;
-            }
-        }
+        return autos.filter(autos => autos.patente == patentebuscada);        
     },
     venderAuto: function (patentebuscada) {
         let autoVendido = this.buscarAuto(patentebuscada);
@@ -27,8 +21,8 @@ let concesionaria = {
         return autos.autosParaLaVenta;
     }
 }
-console.log(autos.length);
+
+
 console.log(concesionaria.buscarAuto("KKQ920"));
-//console.log(concesionaria.venderAuto("APL123"));
 
 //duda: me cambia el valor al mostrar por consola, pero no en el archivo autos

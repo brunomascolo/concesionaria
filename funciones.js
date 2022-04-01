@@ -1,5 +1,6 @@
 let fs = require("fs");
 
+
 let funciones = {
     archivo: "./autos.json",
     leerJSON: function(){
@@ -8,11 +9,13 @@ let funciones = {
     escribirJSON: function (autos) {
         fs.writeFileSync(this.archivo, JSON.stringify(autos, null, ' '));
     },
-    guardarTarea(auto) {
+    guardarAuto(auto) {
         let autos = this.leerJSON();
         autos.push(auto);
         this.escribirJSON(autos);
     },
+  
 }
 
 module.exports = funciones;
+
