@@ -24,7 +24,7 @@ let autos = [
     {
       marca: 'Peugeot',
       modelo: '207 HDI',
-      precio: 100000,
+      precio: 200000,
       km: 0,
       color: 'Blanco',
       cuotas: 14,
