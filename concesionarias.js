@@ -1,15 +1,4 @@
 let autos = require("./autos");
-let persona = [{
-    nombre: "Juan",
-    capacidadDePagoEnCuotas: 20000,
-    capacidadDePagoTotal: 100000
-    },
-    {
-        nombre: "Bruno",
-        capacidadDePagoEnCuotas: 10000,
-        capacidadDePagoTotal: 50000
-    }
-];
 
 let concesionaria = {
     autos: autos,
@@ -67,6 +56,11 @@ let concesionaria = {
         else{
             return false;
         }
+    },
+    autosQuePuedeComprar: function(persona){
+        autosALaVenta = this.autosParaLaVenta();
+        autosQuePuedeComprar = autosALaVenta.filter(auto => this.puedeComprar(persona, auto) == true);
+        return autosQuePuedeComprar;
     }
 };
 
@@ -84,21 +78,26 @@ let concesionaria = {
 // console.log(concesionaria.listaDeVentas());
 // console.log(concesionaria.totalDeVentas())
 
-console.log(concesionaria.puedeComprar({
+// console.log(concesionaria.puedeComprar({
+//     nombre: "Juan",
+//     capacidadDePagoEnCuotas: 20000,
+//     capacidadDePagoTotal: 150000
+//     },
+//     {
+//         marca: 'Ford',
+//         modelo: 'Fiesta',
+//         precio: 150000,
+//         km: 200,
+//         color: 'Azul',
+//         cuotas: 12,
+//         anio: 2019,
+//         patente: 'APL123',
+//         vendido: false
+//       }
+// ))
+
+console.log(concesionaria.autosQuePuedeComprar({
     nombre: "Juan",
     capacidadDePagoEnCuotas: 20000,
-    capacidadDePagoTotal: 150000
-    },
-    {
-        marca: 'Ford',
-        modelo: 'Fiesta',
-        precio: 150000,
-        km: 200,
-        color: 'Azul',
-        cuotas: 12,
-        anio: 2019,
-        patente: 'APL123',
-        vendido: false
-      }
-))
-
+    capacidadDePagoTotal: 100000
+    }))
